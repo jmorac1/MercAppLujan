@@ -147,73 +147,243 @@
             </ul>
         <div id="content-wrapper" class="d-flex flex-column">
 
-            <div id="content">
+            <div class="container-fluid">
 
-                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-                    </nav>
-                <div class="container-fluid">
+                <h1 class="h3 mb-4 text-gray-800" id="pageTitle">🛍️ Carrito de Compras</h1>
 
-                    <h1 class="h3 mb-4 text-gray-800"> Carrito de Compras</h1>
-
-                    <div class="row">
-                        <div class="col-xl-8 col-lg-7">
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Detalle de Productos</h6>
-                                </div>
-                                <div class="card-body">
-                                    <div class="table-responsive">
-                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                            <thead>
-                                                <tr>
-                                                    <th>Producto</th>
-                                                    <th>Precio</th>
-                                                    <th>Cantidad</th>
-                                                    <th>Total</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>Leche</td>
-                                                    <td>₡1.500</td>
-                                                    <td>1</td>
-                                                    <td>₡1.500</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Queso 2Kg</td>
-                                                    <td>₡4.500</td>
-                                                    <td>2</td>
-                                                    <td>₡9.000</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
+                <div class="row" id="cart-section">
+                    <div class="col-xl-8 col-lg-7">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Detalle de Productos</h6>
                             </div>
-                        </div>
-
-                        <div class="col-xl-4 col-lg-5">
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Resumen de la Orden</h6>
-                                </div>
-                                <div class="card-body">
-
-                                    </div>
-                                    <hr>
-                                    <a href="#" class="btn btn-success btn-block">
-                                        <i class="fas fa-credit-card"></i> Pagar Ahora
-                                    </a>
-                                    <a href="index.html" class="btn btn-secondary btn-block mt-2">
-                                        <i class="fas fa-arrow-left"></i> Continuar Comprando
-                                    </a>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>Producto</th>
+                                                <th>Precio</th>
+                                                <th>Cantidad</th>
+                                                <th>Total</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Leche Descremada</td>
+                                                <td>₡1.500</td>
+                                                <td>1</td>
+                                                <td>₡1.500</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Queso 2 Kg</td>
+                                                <td>₡4.500</td>
+                                                <td>2</td>
+                                                <td>₡9.000</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    <div class="col-xl-4 col-lg-5">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Resumen de la Orden</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between mb-2"><span>Total:</span><span class="font-weight-bold">₡10.500</span></div>
+                                <div class="d-flex justify-content-between mb-2"><span>IVA:</span><span class="font-weight-bold">₡1.3650</span></div>
+                                <div class="d-flex justify-content-between mb-2"><span>Subtotal:</span><span class="font-weight-bold">₡11.865</span></div>
+                                <div class="d-flex justify-content-between border-top pt-3">
+                                    <span class="h5">Total:</span>
+                                    <span class="h5 font-weight-bold text-success">₡11.865</span>
+                                </div>
+                                <hr>
+                                <button class="btn btn-success btn-block" id="btn-goto-checkout">
+                                    <i class="fas fa-credit-card"></i> Pagar Ahora
+                                </button>
+                                <a href="index.html" class="btn btn-secondary btn-block mt-2">
+                                    <i class="fas fa-arrow-left"></i> Continuar Comprando
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
+                <div class="row d-none" id="checkout-section">
+                    <div class="col-xl-8 col-lg-7">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Información Pago</h6>
+                            </div>
+                            <div class="card-body">
+                                <form id="checkout-form">
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="inputName">Nombre Completo</label>
+                                            <input type="text" class="form-control" id="inputName" placeholder="Juan Pérez">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="inputPhone">Teléfono</label>
+                                            <input type="text" class="form-control" id="inputPhone" placeholder="(+506) 8888-8888">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputAddress">Dirección</label>
+                                        <input type="text" class="form-control" id="inputAddress" placeholder="1234 Avenida Principal">
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="inputCity">Ciudad</label>
+                                            <input type="text" class="form-control" id="inputCity">
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="inputState">Provincia</label>
+                                            <select id="inputState" class="form-control">
+                                                <option selected>Escoge un opcion</option>
+
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-2">
+                                            <label for="inputZip">Codigo postal</label>
+                                            <input type="text" class="form-control" id="inputZip">
+                                        </div>
+                                    </div>
+                                    
+                                    <hr class="mt-4 mb-4">
+
+                                    <h5 class="mb-3 text-gray-700"><i class="fas fa-credit-card mr-2"></i> Información de Pago</h5>
+
+                                    <div class="row mb-3">
+                                        <div class="col-6">
+                                            <div class="card border-left-primary shadow h-100 py-2 payment-method active-method" data-method="card">
+                                                <div class="card-body">
+                                                    <div class="row no-gutters align-items-center">
+                                                        <div class="col mr-2">
+                                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Tarjeta de Crédito o Débito</div>
+                                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><i class="fab fa-cc-visa"></i> / <i class="fab fa-cc-mastercard"></i></div>
+                                                        </div>
+                                                        <div class="col-auto">
+                                                            <i class="fas fa-check-circle text-primary"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="card border-left-secondary shadow h-100 py-2 payment-method" data-method="paypal">
+                                                <div class="card-body">
+                                                    <div class="row no-gutters align-items-center">
+                                                        <div class="col mr-2">
+                                                            <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">Sinpe Movil</div>
+                                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><i class="fab fa-paypal"></i></div>
+                                                        </div>
+                                                        <div class="col-auto">
+                                                            <i class="far fa-circle text-secondary"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div id="card-form-details">
+                                        <div class="form-group">
+                                            <label for="inputCardNumber">Número de Tarjeta</label>
+                                            <input type="text" class="form-control" id="inputCardNumber" placeholder="XXXX XXXX XXXX XXXX">
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label for="inputCardName">Nombre en la Tarjeta</label>
+                                                <input type="text" class="form-control" id="inputCardName">
+                                            </div>
+                                            <div class="form-group col-md-3">
+                                                <label for="inputExpiry">Vencimiento</label>
+                                                <input type="text" class="form-control" id="inputExpiry" placeholder="MM/AA">
+                                            </div>
+                                            <div class="form-group col-md-3">
+                                                <label for="inputCvv">CVV</label>
+                                                <input type="text" class="form-control" id="inputCvv" placeholder="123">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    
+                                    <hr class="mt-4 mb-4">
+                                    
+                                    <button type="submit" class="btn btn-primary btn-lg btn-block">
+                                        <i class="fas fa-lock"></i> Confirmar y Pagar ₡11.865
+                                    </button>
+                                    <button type="button" class="btn btn-secondary btn-block mt-2" id="btn-goto-cart">
+                                        <i class="fas fa-arrow-left"></i> Volver al Carrito
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-xl-4 col-lg-5">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3 bg-primary text-white">
+                                <h6 class="m-0 font-weight-bold">Total a Pagar</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between mb-2"><span>Total:</span><span class="font-weight-bold">₡10.500</span></div>
+                                <div class="d-flex justify-content-between mb-2"><span>IVA:</span><span class="font-weight-bold">₡1.3650</span></div>
+                                <div class="d-flex justify-content-between mb-2"><span>Subtotal:</span><span class="font-weight-bold">₡11.865</span></div>
+                                <div class="d-flex justify-content-between border-top pt-3">
+                                    <span class="h4">Total Final:</span>
+                                    <span class="h4 font-weight-bold text-success">₡11.865</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row d-none" id="confirmation-section">
+                    <div class="col-lg-12">
+                        <div class="card shadow mb-4">
+                            <div class="card-body text-center py-5">
+                                <i class="fas fa-check-circle text-success" style="font-size: 80px;"></i>
+                                <h2 class="text-success mt-4">¡Pedido Realizado con Éxito!</h2>
+                                <p class="lead text-gray-700">La orden **#ADFG-7896** ha sido confirmada y procesada. Recibirás un correo electrónico con los detalles del envío en breve.</p>
+                                <hr class="my-4">
+
+                                <div class="row justify-content-center">
+                                    <div class="col-md-6 col-lg-4 mb-3">
+                                        <div class="card border-left-primary h-100 py-2">
+                                            <div class="card-body">
+                                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Monto Total</div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800">₡11.865</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <h4 class="mt-5 mb-3 text-gray-800">Resumen del Pedido</h4>
+                                <div class="table-responsive mx-auto" style="max-width: 600px;">
+                                    <table class="table table-bordered text-left" width="100%" cellspacing="0">
+                                        <tbody>
+                                            <tr>
+                                                <td class="font-weight-bold">Productos:</td>
+                                                <td>Leche Descremada (1), Queso 2 kg (2)</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="font-weight-bold">Forma de Pago:</td>
+                                                <td>Tarjeta de Crédito terminada en **** 0236</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <a href="index.html" class="btn btn-primary mt-4">
+                                    <i class="fas fa-home"></i> Volver a la pagina principal
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
         </div>
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
@@ -228,6 +398,8 @@
 
     <!-- Custom scripts for all pages-->
     <script src="../static/js/sb-admin-2.min.js"></script>
+
+    <script src="../static/js/carrito.js"></script>
 </body>
 
 </html>
