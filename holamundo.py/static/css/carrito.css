@@ -1,0 +1,33 @@
+/*
+    Estilos Específicos para Carrito de Compras
+    Archivo: carrito-styles.css
+*/
+
+/* Mejorar visual de la tabla del carrito */
+.table th, .table td {
+    vertical-align: middle; /* Centra el contenido de las celdas */
+    padding: 1rem;
+}
+
+/* Estilo para los botones de cantidad o íconos de acción */
+.table .btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+}
+
+/* Estilo para el resumen de la orden */
+.card-body > .d-flex {
+    font-size: 1.1rem;
+}
+
+/* Separador más sutil en el resumen */
+.card-body hr {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Asegura que los botones de Pagar/Continuar Ocupen todo el ancho */
+.card-body .btn-block {
+    margin-top: 0.5rem;
+}
