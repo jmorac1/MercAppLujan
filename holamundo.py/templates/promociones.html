@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
 
@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>MercApp Luján - Reportes</title>
+    <title>MercApp Luján - Promociones</title>
 
     <!-- Custom fonts for this template-->
     <link href="../static/css/all.min.css" rel="stylesheet" type="text/css">
@@ -42,7 +42,7 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="index.html">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
@@ -148,7 +148,7 @@
             </li>
 
 
-<li class="nav-item">
+<li class="nav-item active">
     <a class="nav-link" href="promociones.html">
         <i class="fas fa-fw fa-tags"></i>
         <span>Promociones</span></a>
@@ -404,143 +404,191 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
-<!-- Bienvenida -->
+<!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <div>
-        <h1 class="h3 mb-1 text-gray-800">Panel de Reportes</h1>
-        <p class="mb-0 text-gray-600">
-            Bienvenido(a) a <strong>MercApp Luján</strong>. Desde aquí podés generar reportes, revisar novedades del negocio y acceder rápido a tus módulos.
-        </p>
-    </div>
-    <a href="inventario.html" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
-        <i class="fas fa-file-alt fa-sm text-white-50"></i> Generar reporte
-    </a>
+    <h1 class="h3 mb-0 text-gray-800">Promociones</h1>
+    <button id="btnGuardar" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+        <i class="fas fa-save fa-sm text-white-50"></i> Guardar cambios
+    </button>
 </div>
 
-<!-- Generar reportes -->
 <div class="row">
-
-    <div class="col-lg-7 mb-4">
-        <div class="card shadow">
-            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">Generar reportes</h6>
-            </div>
-            <div class="card-body">
-                <p class="text-gray-700 mb-3">
-                    Seleccioná el tipo de reporte. (En esta versión, los botones te llevan a las pantallas existentes.)
-                </p>
-
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <a class="btn btn-outline-primary btn-block" href="inventario.html">
-                            <i class="fas fa-boxes mr-1"></i> Reporte de inventario
-                        </a>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <a class="btn btn-outline-primary btn-block" href="carrito.html">
-                            <i class="fas fa-shopping-cart mr-1"></i> Reporte de carrito / ventas
-                        </a>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <a class="btn btn-outline-primary btn-block" href="location.html">
-                            <i class="fas fa-map-marker-alt mr-1"></i> Reporte de contacto / sucursal
-                        </a>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <a class="btn btn-outline-primary btn-block" href="juego.html">
-                            <i class="fas fa-gamepad mr-1"></i> Actividad (juego)
-                        </a>
-                    </div>
-                </div>
-
-                <hr>
-
-                <div class="alert alert-info mb-0" role="alert">
-                    Tip: cuando conectés el backend (Flask/Python), este bloque puede convertirse en un formulario con filtros (fechas, estado, categoría) y descarga PDF/Excel.
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Resumen rápido -->
-    <div class="col-lg-5 mb-4">
+    <div class="col-lg-5">
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Resumen rápido</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Formulario de promoción</h6>
             </div>
             <div class="card-body">
-                <div class="mb-3">
-                    <div class="small text-gray-500">Estado del inventario</div>
-                    <div class="font-weight-bold text-gray-800">Listo para revisión</div>
-                </div>
-                <div class="mb-3">
-                    <div class="small text-gray-500">Pendientes</div>
-                    <div class="font-weight-bold text-gray-800">—</div>
-                </div>
-                <div class="mb-0">
-                    <div class="small text-gray-500">Última actualización</div>
-                    <div class="font-weight-bold text-gray-800">—</div>
-                </div>
-            </div>
-        </div>
+                <form id="promoForm">
+                    <div class="form-group">
+                        <label for="producto">Producto</label>
+                        <input type="text" class="form-control" id="producto" placeholder="Ej: Queso Fresco" required>
+                    </div>
 
-        <div class="card shadow">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Accesos rápidos</h6>
-            </div>
-            <div class="card-body">
-                <a href="inventario.html" class="btn btn-primary btn-block mb-2">
-                    <i class="fas fa-warehouse mr-1"></i> Ir a inventario
-                </a>
-                <a href="carrito.html" class="btn btn-primary btn-block">
-                    <i class="fas fa-shopping-bag mr-1"></i> Ir al carrito
-                </a>
+                    <div class="form-group">
+                        <label for="precio">Precio (₡)</label>
+                        <input type="number" class="form-control" id="precio" min="0" step="0.01" placeholder="Ej: 3500" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="descuento">Descuento (%)</label>
+                        <input type="number" class="form-control" id="descuento" min="0" max="100" step="0.01" placeholder="Ej: 10" required>
+                    </div>
+
+                    <input type="hidden" id="editIndex" value="">
+
+                    <button type="submit" class="btn btn-success">
+                        <i class="fas fa-plus"></i> Agregar / Actualizar
+                    </button>
+                    <button type="button" id="btnLimpiar" class="btn btn-secondary ml-2">
+                        Limpiar
+                    </button>
+
+                    <div class="mt-3 small text-muted">
+                        * Se guarda localmente en el navegador (demo). Si después lo conectás con BD, este mismo formulario se puede enlazar a SQL.
+                    </div>
+                </form>
             </div>
         </div>
     </div>
 
-</div>
-
-<!-- Noticias del negocio -->
-<div class="row">
-    <div class="col-12">
+    <div class="col-lg-7">
         <div class="card shadow mb-4">
-            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">Noticias del negocio</h6>
-                <span class="small text-gray-500">Últimas novedades</span>
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Lista de promociones</h6>
             </div>
             <div class="card-body">
-                <div class="list-group">
-
-                    <div class="list-group-item">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h6 class="mb-1">📦 Nuevas existencias</h6>
-                            <small class="text-gray-500">Hoy</small>
-                        </div>
-                        <p class="mb-0 text-gray-700">Se recibieron nuevos productos. Revisá el inventario y actualizá precios si aplica.</p>
-                    </div>
-
-                    <div class="list-group-item">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h6 class="mb-1">🕒 Horario especial</h6>
-                            <small class="text-gray-500">Esta semana</small>
-                        </div>
-                        <p class="mb-0 text-gray-700">Atención al público con horario extendido el viernes.</p>
-                    </div>
-
-                    <div class="list-group-item">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h6 class="mb-1">🎯 Promo activa</h6>
-                            <small class="text-gray-500">Vigente</small>
-                        </div>
-                        <p class="mb-0 text-gray-700">Promoción en productos seleccionados. Prepará el reporte de ventas para seguimiento.</p>
-                    </div>
-
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="tablaPromos" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Producto</th>
+                                <th>Precio</th>
+                                <th>Descuento</th>
+                                <th>Precio final</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="promosBody">
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
+
+        <div class="alert alert-info">
+            Consejo: si querés que el “Chat” responda con datos reales, el siguiente paso es guardar estas promos en una tabla (SQL) y consultarlas desde el backend.
+        </div>
     </div>
 </div>
+
+<script>
+    const STORAGE_KEY = "mercapp_promos";
+
+    function calcFinal(precio, descuento) {
+        const p = Number(precio) || 0;
+        const d = Number(descuento) || 0;
+        return p - (p * (d / 100));
+    }
+
+    function cargarPromos() {
+        try {
+            return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+        } catch (e) {
+            return [];
+        }
+    }
+
+    function guardarPromos(promos) {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(promos));
+    }
+
+    function render() {
+        const promos = cargarPromos();
+        const body = document.getElementById("promosBody");
+        body.innerHTML = "";
+
+        promos.forEach((p, i) => {
+            const final = calcFinal(p.precio, p.descuento);
+            const tr = document.createElement("tr");
+            tr.innerHTML = `
+                <td>${p.producto}</td>
+                <td>₡ ${Number(p.precio).toFixed(2)}</td>
+                <td>${Number(p.descuento).toFixed(2)}%</td>
+                <td>₡ ${final.toFixed(2)}</td>
+                <td>
+                    <button class="btn btn-sm btn-warning mr-1" onclick="editar(${i})">
+                        Editar
+                    </button>
+                    <button class="btn btn-sm btn-danger" onclick="eliminar(${i})">
+                        Eliminar
+                    </button>
+                </td>
+            `;
+            body.appendChild(tr);
+        });
+    }
+
+    function limpiarForm() {
+        document.getElementById("producto").value = "";
+        document.getElementById("precio").value = "";
+        document.getElementById("descuento").value = "";
+        document.getElementById("editIndex").value = "";
+    }
+
+    function editar(i) {
+        const promos = cargarPromos();
+        const p = promos[i];
+        if (!p) return;
+
+        document.getElementById("producto").value = p.producto;
+        document.getElementById("precio").value = p.precio;
+        document.getElementById("descuento").value = p.descuento;
+        document.getElementById("editIndex").value = i;
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function eliminar(i) {
+        const promos = cargarPromos();
+        promos.splice(i, 1);
+        guardarPromos(promos);
+        render();
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        render();
+
+        document.getElementById("promoForm").addEventListener("submit", (e) => {
+            e.preventDefault();
+            const promos = cargarPromos();
+
+            const producto = document.getElementById("producto").value.trim();
+            const precio = document.getElementById("precio").value;
+            const descuento = document.getElementById("descuento").value;
+
+            const idx = document.getElementById("editIndex").value;
+
+            const item = { producto, precio, descuento };
+
+            if (idx !== "" && promos[idx]) {
+                promos[idx] = item;
+            } else {
+                promos.push(item);
+            }
+
+            guardarPromos(promos);
+            render();
+            limpiarForm();
+        });
+
+        document.getElementById("btnLimpiar").addEventListener("click", limpiarForm);
+
+        document.getElementById("btnGuardar").addEventListener("click", () => {
+            // Ya se guarda en cada cambio, pero este botón da feedback al usuario.
+            alert("Cambios guardados correctamente ✅");
+        });
+    });
+</script>
 
 <!-- /.container-fluid -->
 

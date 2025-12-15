@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
 
@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>MercApp Luján - Reportes</title>
+    <title>MercApp Luján - Chat</title>
 
     <!-- Custom fonts for this template-->
     <link href="../static/css/all.min.css" rel="stylesheet" type="text/css">
@@ -42,7 +42,7 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="index.html">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
@@ -154,18 +154,11 @@
         <span>Promociones</span></a>
 </li>
 
-<li class="nav-item">
+<li class="nav-item active">
     <a class="nav-link" href="chat.html">
         <i class="fas fa-fw fa-comments"></i>
         <span>Chat</span></a>
 </li>
-
-<li class="nav-item">
-    <a class="nav-link" href="soporte.html">
-        <i class="fas fa-fw fa-headset"></i>
-        <span>Soporte</span></a>
-</li>
-
 
 
 
@@ -404,143 +397,117 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
-<!-- Bienvenida -->
+<!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <div>
-        <h1 class="h3 mb-1 text-gray-800">Panel de Reportes</h1>
-        <p class="mb-0 text-gray-600">
-            Bienvenido(a) a <strong>MercApp Luján</strong>. Desde aquí podés generar reportes, revisar novedades del negocio y acceder rápido a tus módulos.
-        </p>
-    </div>
-    <a href="inventario.html" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
-        <i class="fas fa-file-alt fa-sm text-white-50"></i> Generar reporte
-    </a>
+    <h1 class="h3 mb-0 text-gray-800">Chat del negocio</h1>
 </div>
 
-<!-- Generar reportes -->
 <div class="row">
-
-    <div class="col-lg-7 mb-4">
-        <div class="card shadow">
-            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">Generar reportes</h6>
+    <div class="col-lg-8">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3 d-flex justify-content-between align-items-center">
+                <h6 class="m-0 font-weight-bold text-primary">Asistente MercApp</h6>
+                <span class="small text-muted">Respuestas predeterminadas</span>
             </div>
-            <div class="card-body">
-                <p class="text-gray-700 mb-3">
-                    Seleccioná el tipo de reporte. (En esta versión, los botones te llevan a las pantallas existentes.)
-                </p>
 
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <a class="btn btn-outline-primary btn-block" href="inventario.html">
-                            <i class="fas fa-boxes mr-1"></i> Reporte de inventario
-                        </a>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <a class="btn btn-outline-primary btn-block" href="carrito.html">
-                            <i class="fas fa-shopping-cart mr-1"></i> Reporte de carrito / ventas
-                        </a>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <a class="btn btn-outline-primary btn-block" href="location.html">
-                            <i class="fas fa-map-marker-alt mr-1"></i> Reporte de contacto / sucursal
-                        </a>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <a class="btn btn-outline-primary btn-block" href="juego.html">
-                            <i class="fas fa-gamepad mr-1"></i> Actividad (juego)
-                        </a>
+            <div class="card-body" style="height: 380px; overflow-y: auto;" id="chatBox">
+                <div class="mb-3">
+                    <div class="small text-muted">Sistema</div>
+                    <div class="p-2 border rounded bg-light">
+                        Hola 👋 Soy el asistente de MercApp. Elegí una pregunta rápida o escribí tu consulta.
                     </div>
                 </div>
+            </div>
 
-                <hr>
+            <div class="card-footer">
+                <div class="mb-2">
+                    <button class="btn btn-sm btn-outline-primary" id="btnPregunta">
+                        ¿Cuál es el producto más vendido?
+                    </button>
+                </div>
 
-                <div class="alert alert-info mb-0" role="alert">
-                    Tip: cuando conectés el backend (Flask/Python), este bloque puede convertirse en un formulario con filtros (fechas, estado, categoría) y descarga PDF/Excel.
+                <form id="chatForm" class="d-flex">
+                    <input class="form-control mr-2" id="chatInput" placeholder="Escribí tu pregunta..." autocomplete="off" required>
+                    <button class="btn btn-primary" type="submit">
+                        Enviar
+                    </button>
+                </form>
+
+                <div class="small text-muted mt-2">
+                    * Demo: la pregunta “¿Cuál es el producto más vendido?” tiene una respuesta fija.
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Resumen rápido -->
-    <div class="col-lg-5 mb-4">
+    <div class="col-lg-4">
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Resumen rápido</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Respuesta predeterminada</h6>
             </div>
             <div class="card-body">
-                <div class="mb-3">
-                    <div class="small text-gray-500">Estado del inventario</div>
-                    <div class="font-weight-bold text-gray-800">Listo para revisión</div>
-                </div>
-                <div class="mb-3">
-                    <div class="small text-gray-500">Pendientes</div>
-                    <div class="font-weight-bold text-gray-800">—</div>
-                </div>
-                <div class="mb-0">
-                    <div class="small text-gray-500">Última actualización</div>
-                    <div class="font-weight-bold text-gray-800">—</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="card shadow">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Accesos rápidos</h6>
-            </div>
-            <div class="card-body">
-                <a href="inventario.html" class="btn btn-primary btn-block mb-2">
-                    <i class="fas fa-warehouse mr-1"></i> Ir a inventario
-                </a>
-                <a href="carrito.html" class="btn btn-primary btn-block">
-                    <i class="fas fa-shopping-bag mr-1"></i> Ir al carrito
-                </a>
-            </div>
-        </div>
-    </div>
-
-</div>
-
-<!-- Noticias del negocio -->
-<div class="row">
-    <div class="col-12">
-        <div class="card shadow mb-4">
-            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">Noticias del negocio</h6>
-                <span class="small text-gray-500">Últimas novedades</span>
-            </div>
-            <div class="card-body">
-                <div class="list-group">
-
-                    <div class="list-group-item">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h6 class="mb-1">📦 Nuevas existencias</h6>
-                            <small class="text-gray-500">Hoy</small>
-                        </div>
-                        <p class="mb-0 text-gray-700">Se recibieron nuevos productos. Revisá el inventario y actualizá precios si aplica.</p>
-                    </div>
-
-                    <div class="list-group-item">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h6 class="mb-1">🕒 Horario especial</h6>
-                            <small class="text-gray-500">Esta semana</small>
-                        </div>
-                        <p class="mb-0 text-gray-700">Atención al público con horario extendido el viernes.</p>
-                    </div>
-
-                    <div class="list-group-item">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h6 class="mb-1">🎯 Promo activa</h6>
-                            <small class="text-gray-500">Vigente</small>
-                        </div>
-                        <p class="mb-0 text-gray-700">Promoción en productos seleccionados. Prepará el reporte de ventas para seguimiento.</p>
-                    </div>
-
-                </div>
+                <p class="mb-2"><strong>Pregunta:</strong> ¿Cuál es el producto más vendido?</p>
+                <p class="mb-0"><strong>Respuesta:</strong> En este momento, el sistema muestra como ejemplo el producto más vendido: <strong>Queso Fresco</strong>. (Cuando conectemos el módulo de ventas/BD, se calculará automáticamente.)</p>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    function addMsg(sender, text, alignRight=false) {
+        const box = document.getElementById("chatBox");
+        const wrapper = document.createElement("div");
+        wrapper.className = "mb-3";
+
+        const meta = document.createElement("div");
+        meta.className = "small text-muted";
+        meta.textContent = sender;
+
+        const bubble = document.createElement("div");
+        bubble.className = "p-2 border rounded " + (alignRight ? "bg-primary text-white" : "bg-light");
+        bubble.style.maxWidth = "85%";
+        bubble.style.marginLeft = alignRight ? "auto" : "0";
+
+        bubble.textContent = text;
+
+        wrapper.appendChild(meta);
+        wrapper.appendChild(bubble);
+        box.appendChild(wrapper);
+
+        box.scrollTop = box.scrollHeight;
+    }
+
+    function responder(textoUsuario) {
+        const normal = textoUsuario.trim().toLowerCase();
+        const pregunta = "cual es el producto mas vendido";
+        // Normaliza tildes de forma simple:
+        const cleaned = normal.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+
+        if (cleaned.includes(pregunta)) {
+            return "En este momento, el sistema muestra como ejemplo el producto más vendido: Queso Fresco. ✅";
+        }
+        return "Gracias por tu consulta. Por ahora este chat es demo; podés usar la pregunta rápida para ver la respuesta predeterminada.";
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        document.getElementById("btnPregunta").addEventListener("click", () => {
+            const q = "¿Cuál es el producto más vendido?";
+            addMsg("Tú", q, true);
+            addMsg("Asistente", responder(q), false);
+        });
+
+        document.getElementById("chatForm").addEventListener("submit", (e) => {
+            e.preventDefault();
+            const input = document.getElementById("chatInput");
+            const q = input.value;
+            if (!q.trim()) return;
+
+            addMsg("Tú", q, true);
+            addMsg("Asistente", responder(q), false);
+            input.value = "";
+        });
+    });
+</script>
 
 <!-- /.container-fluid -->
 
